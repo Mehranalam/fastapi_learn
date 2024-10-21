@@ -114,7 +114,7 @@ headers = {
 
 این مشکل به این دلیل هستش که توکن  احراز هویت JWT درست encode و decode نمیشن پس ما در این مرحله داده ها را به صورت دستی وارد دیتابیس خودمون میکنیم و سپس با ایجاد تابع encode اون رو به شکل یک توکن jwt تبدیل میکنیم سپس با استفاده از اندپوینت `login/` توکن رو `post` میکنیم:
 
-‍‍‍```python
+```python
 async def login(login_request: LoginRequest):
     user = user_collection.find_one({"email": login_request.email})
     if user is None or user['password'] != login_request.password:
@@ -123,5 +123,4 @@ async def login(login_request: LoginRequest):
     token = encode_jwt_token(login_request.email)
     
     return {"access_token": token, "token_type": "bearer"}
-
 ```
